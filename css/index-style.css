@@ -142,19 +142,15 @@ body {
     padding: 0;
 }
 #sketch{
-    background-color: whitesmoke;
+    background-color: lightgray;
     background-attachment: scroll;
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
     height: 500px;
+    overflow : hidden;
 
 }
 
 <!--
 -->
-#sketch{
-    font-family: 'Play', sans-serif;
-    background: #2b2b2b;
-    margin: 0;
-}
