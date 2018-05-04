@@ -6,9 +6,35 @@ html, body {
 
 
 }
+body {
+    font-size: 20px;
+    color: #212529;
+    font-family: 'Lora', 'Times New Roman', serif;
+    overflow-x: hidden;
+}
 
-h1, h2, h3, h4, h5, h6, p {
+p {
+    line-height: 1.5;
+    margin: 30px 0;
+}
+p a {
+    text-decoration: none;
+}
+a{
+    color: #212529;
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    transition: all 0.2s;
+}
+h1, h2, h3, h4, h5, h6{
     margin-bottom: 20px;
+    font-weight: 800;
+    font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+a:focus, a:hover {
+    color: #0085A1;
+
 }
 
 .bg-mystyle{
@@ -20,8 +46,9 @@ h1, h2, h3, h4, h5, h6, p {
  * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-simple-sidebar/blob/master/LICENSE)
  */
 
-body {
-    overflow-x: hidden;
+blockquote {
+    font-style: italic;
+    color: #868e96;
 }
 
 #wrapper {
@@ -163,10 +190,9 @@ body {
 }
 .title{
 
-    font-family: 'Iceland';
+    font-family: Iceland, sans-serif;
     position: absolute;
     font-size: 12px;
-    opacity: 0.8;
     color: #fff;
     text-align: center;
     width: 100%;
@@ -185,6 +211,7 @@ body {
 #glowblue {
     text-align: center;
     font-size: 7em;
+    font-family: Iceland, sans-serif;
     margin: 20px 0 20px 0;
     text-decoration: none;
     -webkit-transition: all 0.5s;
@@ -195,8 +222,8 @@ body {
 
 #glowblue:hover {
 
-    color: white;
-    font-family: Iceland;
+    color: #ffffff;
+    font-family: Iceland, sans-serif;
     -webkit-animation: neon2 1.5s ease-in-out infinite alternate;
     -moz-animation: neon2 1.5s ease-in-out infinite alternate;
     animation: neon2 1.5s ease-in-out infinite alternate;
@@ -208,7 +235,7 @@ body {
         text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #228DFF, 0 0 70px #228DFF, 0 0 80px #228DFF, 0 0 100px #228DFF, 0 0 150px #228DFF;
     }
     to {
-        text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #228DFF, 0 0 35px #228DFF, 0 0 40px #228DFF, 0 0 50px #228DFF, 0 0 75px #228DFF;
+        text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px deepskyblue, 0 0 35px #228DFF, 0 0 40px #228DFF, 0 0 50px #228DFF, 0 0 75px #228DFF;
     }
 }
 @-moz-keyframes neon2 {
@@ -216,7 +243,7 @@ body {
         text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #228DFF, 0 0 70px #228DFF, 0 0 80px #228DFF, 0 0 100px #228DFF, 0 0 150px #228DFF;
     }
     to {
-        text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #228DFF, 0 0 35px #228DFF, 0 0 40px #228DFF, 0 0 50px #228DFF, 0 0 75px #228DFF;
+        text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px deepskyblue, 0 0 35px #228DFF, 0 0 40px #228DFF, 0 0 50px #228DFF, 0 0 75px #228DFF;
     }
 }
 @keyframes neon2 {
@@ -224,6 +251,56 @@ body {
         text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #228DFF, 0 0 70px #228DFF, 0 0 80px #228DFF, 0 0 100px #228DFF, 0 0 150px #228DFF;
     }
     to {
-        text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #228DFF, 0 0 35px #228DFF, 0 0 40px #228DFF, 0 0 50px #228DFF, 0 0 75px #228DFF;
+        text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px deepskyblue, 0 0 35px #228DFF, 0 0 40px #228DFF, 0 0 50px #228DFF, 0 0 75px #228DFF;
+    }
+}
+
+
+
+
+
+
+
+
+.post-preview > a {
+    color: #212529;
+}
+
+.post-preview > a:focus, .post-preview > a:hover {
+    text-decoration: none;
+    color: #0085A1;
+}
+
+.post-preview > a > .post-title {
+    font-size: 30px;
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+
+.post-preview > a > .post-subtitle {
+    font-weight: 300;
+    margin: 0 0 10px;
+}
+
+.post-preview > .post-meta {
+    font-size: 18px;
+    font-style: italic;
+    margin-top: 0;
+    color: #868e96;
+}
+
+.post-preview > .post-meta > a {
+    text-decoration: none;
+    color: #212529;
+}
+
+.post-preview > .post-meta > a:focus, .post-preview > .post-meta > a:hover {
+    text-decoration: underline;
+    color: #0085A1;
+}
+
+@media only screen and (min-width: 768px) {
+    .post-preview > a > .post-title {
+        font-size: 36px;
     }
 }
