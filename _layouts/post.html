@@ -1,66 +1,46 @@
----
-layout: page
----
-<section class="diagonal">
-	<div class="blog-post text-container">
-		{% include post-title.html post=page %}
-		<div class="post-content">
-			{{ content }}
-		</div>
-	</div>
-</section>
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/BlogPosting">
+    {% include head.html %}
+    <body class="has-push-menu">
+        {% include minutes-to-read.html %}
+        {% include svg-icons.html %}
+        {% include header.html %}
+        <section class="post">
 
+            <article role="article" id="post" class="post-content" itemprop="articleBody">
+                <p itemprop="post-info" class="post-info">
+                    {% if page.date %}
+                        <svg id="date" class="icon-calendar"><use xlink:href="#icon-calendar"></use></svg>
+                        <time itemprop="datePublished" datetime="{{ page.date | date_to_xmlschema }}" class="date">
+                            {% include date.html date=page.date %}
+                        </time>
+                    {% endif %}
+                    <svg id="clock" class="icon-clock"><use xlink:href="#icon-clock"></use></svg>
+                    <span>{{ minutesText }}</span>
+                </p>
+                <h1 class="post-title" itemprop="name">{{ page.title }}</h1>
+                <p itemprop="description" class="subtitle">{{ page.description }}</p>
 
-{% if page.author_staff_member %}
-	<section class="diagonal patterned">
-		<div class="container">
-			<h2>Author</h2>
-			<ul class="image-grid">
-				{% assign author_id = page.author_staff_member | prepend: "/staff_members/" | append: "/" %}
-				{% assign author = site.staff_members | where: "url", author_id | first %}
+                {% if page.image %}
+                    <img src="{{ page.image }}" alt="Imagem de capa" class="post-cover">
+                {% endif %}
 
-				<li>{% include staff-member.html member=author %}</li>
-			</ul>
-		</div>
-	</section>
-{% endif %}
+                {{ content }}
+            </article>
 
-<section class="diagonal alternate">
-	<div class="text-container">
-		<h2>Next post</h2>
-		<div class="blog-post">
-			{% if page.next %}
-				{% include post-summary.html post=page.next %}
-			{% elsif page.previous %}
-				{% include post-summary.html post=page.previous %}
-			{% endif %}
-		</div>
-	</div>
-</section>
+            <div class="progress-bar" data-minutes="{{ totalMinutes }}">
+                <span class="time-completed"></span>
+                <span class="time-remaining"></span>
+                <div class="bar">
+                    <span class="completed" style="width:0%;"></span>
+                    <span class="remaining" style="width:100%;"></span>
+                </div>
+            </div>
 
-{% if site.disqus_shortname and page.show_comments %}
-	<section class="diagonal">
-		<div class="container">
-			<h2>Comments</h2>
-			<div id="disqus_thread"></div>
-			<script>
-				/**
-				*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-				*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
-				/*
-				var disqus_config = function () {
-				this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
-				this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-				};
-				*/
-				(function() { // DON'T EDIT BELOW THIS LINE
-				var d = document, s = d.createElement('script');
-				s.src = '//{{ site.disqus_shortname }}.disqus.com/embed.js';
-				s.setAttribute('data-timestamp', +new Date());
-				(d.head || d.body).appendChild(s);
-				})();
-			</script>
-			<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-		</div>
-	</section>
-{% endif %}
+            {% include share.html %}
+            {% include author.html %}
+            {% include comments.html %}
+            {% include footer.html %}
+        </section>
+    </body>
+</html>

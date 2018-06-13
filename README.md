@@ -1,78 +1,161 @@
-# Urban
+# Jekflix Template
+![Cover Image](http://res.cloudinary.com/dm7h7e8xj/image/upload/v1505354182/jekflix-logo_mfngps.png)
 
-Web Agency themed business template for Jekyll. Browse through a [live demo](https://teal-worm.cloudvent.net/).
-Increase the web presence of your agency with this configurable theme.
+See the [demo here](https://www.rossener.com/jekflix-template).
 
-![Urban template screenshot](images/_screenshot.png)
+## What is it?
 
-Urban was made by [CloudCannon](http://cloudcannon.com/), the Cloud CMS for Jekyll.
+A template for Jekyll inspired by Netflix panel for who loves movies and series and would like to have a blog with this cool appearance ;)
 
-Find more templates, themes and step-by-step Jekyll tutorials at [CloudCannon Academy](https://learn.cloudcannon.com/).
+![Screenshot](http://res.cloudinary.com/dm7h7e8xj/image/upload/v1505357238/jekflix-screenshot_qikqkl.jpg)
 
 ## Features
 
-* Contact form
-* Pre-built pages
-* Pre-styled components
-* Blog with pagination
-* Post category pages
-* Disqus comments for posts
-* Staff and author system
-* Configurable footer
-* Optimised for editing in [CloudCannon](http://cloudcannon.com/)
-* RSS/Atom feed
-* SEO tags
-* Google Analytics
+- Gulp
+- Stylus
+- Live Search
+- Minutes to Read
+- Reading Progress Bar
+ 
+ ![Progress Bar](http://res.cloudinary.com/dm7h7e8xj/image/upload/v1505357769/jekflix-progress-bar_he7gqf.jpg)
+- "New Post" tag
+- Load images on demand
+- Emojis 😎
+- Push Menu
+- SVG icons
+- Shell Script to create drafts and posts
+- Tags page
+- About page
+- Contact page
+- Feed RSS
+- Sitemap.xml
+- Info Customization
+- Disqus
+- Google Analytics
 
 ## Setup
 
-1. Add your site and author details in `_config.yml`.
-2. Add your Google Analytics and Disqus keys to `_config.yml`.
-3. Get a workflow going to see your site's output (with [CloudCannon](https://app.cloudcannon.com/) or Jekyll locally).
+1. Install Jekyll (use the command `gem install jekyll`)
+1. Fork the [Jekflix Template](https://github.com/thiagorossener/jekflix-template/fork)
+1. Clone the repo you just forked
+1. Edit `_config.yml` to personalize your site. 
+1. Check out the sample posts in `_posts` to see examples for assigning category, tags, image and other YAML data
+1. Read the documentation below for further customization pointers and documentation
+1. Remember to compile your assets files with Gulp
 
-## Develop
+## Running local
 
-Urban was built with [Jekyll](http://jekyllrb.com/) version 3.3.1, but should support newer versions as well.
+In order to compile the assets and run Jekyll on local you need to follow those steps:
 
-Install the dependencies with [Bundler](http://bundler.io/):
+- Install [NodeJS](https://nodejs.org/) (remember to use the latest version)
+- Run `npm install`
+- Run `npm install -g gulp gulp-cli`
+- Open `_config.yml` and change to:
+```
+baseurl: ""
+url: ""
+```
+- Run `gulp`
 
-~~~bash
-$ bundle install
-~~~
+## Settings
 
-Run `jekyll` commands through Bundler to ensure you're using the right versions:
+You have to fill some informations on `_config.yml` to customize your site.
 
-~~~bash
-$ bundle exec jekyll serve
-~~~
+```
+# Site Settings
+title: Thiago Rossener | Front-end Developer
+email: youremail@xyz.com
+description: Some text about your blog.
+baseurl: "" # the subpath of your site, e.g. /blog/ or empty.
+url: "https://www.rossener.com" # the base hostname & protocol for your site
+google_analytics: "UA-XXXXXXXX-X"
 
-## Editing
+# User settings
+username: Thiago Rossener # it will appear on each page title after '|'
+user_description: Some text about you.
+disqus_username: disqus_username
 
-Urban is already optimised for adding, updating and removing pages, staff, advice, company details and footer elements in [CloudCannon](https://app.cloudcannon.com/).
+# Social Media settings
+# Remove the item if you don't need it
+github_username: github_username
+facebook_username: facebook_username
+twitter_username: twitter_username
+instagram_username: instagram_username
+linkedin_username: linkedin_username
+medium_username: medium_username
+```
 
-### Posts
+## Color customization
 
-* Add, update or remove a post in the *Posts* collection.
-* The **Staff Author** field links to members in the **Staff** collection.
-* Documentation pages are organised in the navigation by category, with URLs based on the path inside the `_docs` folder.
-* Change the defaults when new posts are created in `_posts/_defaults.md`.
+All color variables are in [src/styl/_variables.styl](src/styl/_variables.styl).
 
-### Contact Form
+Default colors:
 
-* Preconfigured to work with [CloudCannon](https://app.cloudcannon.com/), but easily changed to another provider (e.g. [FormSpree](https://formspree.io/)).
-* Sends email to the address listed in company details.
+![#ff0a16](https://placehold.it/15/ff0a16/000000?text=+) `#FF0A16` Theme Color
 
-### Staff
+![#141414](https://placehold.it/15/141414/000000?text=+) `#141414` Primary Dark
 
-* Reused around the site to save multiple editing locations.
-* Add `excluded_in_search: true` to any documentation page's front matter to exclude that page in the search results.
+![#ffffff](https://placehold.it/15/ffffff/000000?text=+) `#FFFFFF` Accent Dark
 
-### Footer
+![#f2f2f2](https://placehold.it/15/f2f2f2/000000?text=+) `#F2F2F2` Light Gray
 
-* Exposed as a data file to give clients better access.
-* Set in the *Data* / *Footer* section.
+![#333333](https://placehold.it/15/333333/000000?text=+) `#333333` Texts
 
-### Company details
+## Creating drafts
 
-* Reused around the site to save multiple editing locations.
-* Set in the *Data* / *Company* section.
+You can use the `initdraft.sh` to create your new drafts. Just follow the command:
+
+```
+./initdraft.sh -c Post Title
+```
+
+The new file will be created at `_drafts` with this format `date-title.md`.
+
+## Creating posts
+
+You can use the `initpost.sh` to create your new posts. Just follow the command:
+
+```
+./initpost.sh -c Post Title
+```
+
+The new file will be created at `_posts` with this format `date-title.md`.
+
+## Front-matter 
+
+When you create a new post, you need to fill the post information in the front-matter, follow this example:
+
+```
+---
+layout: post
+title: "Welcome"
+description: Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+image: 'http://res.cloudinary.com/dm7h7e8xj/image/upload/c_scale,w_760/v1504807239/morpheus_xdzgg1.jpg'
+category: 'blog'
+tags:
+- blog
+- jekyll
+twitter_text: Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+introduction: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+---
+```
+
+**Your image size should have the proportion of a 600x315 image to look good on home page.**
+
+## Questions?
+
+File a [GitHub Issue](https://github.com/thiagorossener/jekflix-template/issues/new) please.
+
+## Donation
+
+Did you like my work? Buy me a beer :)
+
+[![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=YT3BC53XLMJ96&lc=GB&item_name=Thiago%20Rossener%20Nogueira&item_number=DON1212&no_note=0&cn=Adicionar%20instru%c3%a7%c3%b5es%20especiais%20para%20o%20vendedor%3a&no_shipping=2&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted)
+
+## Author
+
+[Thiago Rossener](https://www.rossener.com/) based on [Cards Jekyll Template](https://github.com/willianjusten/cards-jekyll-template).
+
+## License
+
+*Jekflix Template* is available under the MIT license. See the LICENSE file for more info.
