@@ -1,0 +1,12 @@
+---
+layout: default
+img: m.png
+category: Services
+title: Manikishan
+---
+
+##Welcome
+This is a site built on bith jekyll and bootstrap.
+
+===
+For more details contact manikishan
