@@ -3,6 +3,7 @@ layout: default
 img: m.png
 category: Services
 title: Manikishan
+comments: true
 ---
 
 ##Welcome
