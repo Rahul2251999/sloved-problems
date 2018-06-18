@@ -1,0 +1,50 @@
+# Site
+name: "KillSwitch"
+description: "A Blog on exploring the world ......"
+meta_description: "Used Jekyll template, it's open-source."
+logo: 'assets/images/logo.png'
+favicon: 'assets/images/logo.png'
+baseurl:
+google_analytics:
+disqus: 'KillSwitch'
+mailchimp-list: 'https://wowthemes.us11.list-manage.com/subscribe/post?u=8aeb20a530e124561927d3bd8&amp;id=8c3d2d214b'
+
+# Authors
+authors:
+  Manikishan:
+    name: Manikishan Ghantasala
+    display_name: Manikishan
+    gravatar: ffcff9e55f886bcf46c534a2996937d6
+    email: manikishanghantasala@gmail.com
+    web: https://manikisha.wordpress.com
+    twitter: https://twitter.com/ManikishanG
+    description: "Author of this site"
+#  john:
+#    name: John
+#    display_name: John
+#    gravatar: b1cc14991db7a456fcd761680bbc8f81
+#    email: wowthemesnet@gmail.com
+#    web: https://www.wowthemes.net
+#    twitter: https://twitter.com/wowthemesnet
+#    description: "This is the author box. Write a short description of the author here. You are currently previewing Mediumish demo, a Jekyll template compatible with Github pages."
+
+# Plugins
+plugins: 
+  - jekyll-paginate
+  - jekyll-archives
+    
+# Archives
+jekyll-archives:
+  enabled:
+    - categories
+  layout: archive
+  permalinks:
+    category: '/category/:name/'
+    
+# Pagination 
+paginate: 6
+paginate_path: /page:num/
+    
+# Other
+markdown: kramdown
+highlighter: rouge
