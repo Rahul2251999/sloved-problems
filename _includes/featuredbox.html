@@ -1,8 +1,8 @@
 <!-- begin post -->
 {% assign author = site.authors[post.author] %}
-<!--<div class="col-md-6 mb-30px">-->
-    <!--<div class="listfeaturedtag h-100">-->
-        <!--<div class="row h-100">-->
+<div class="col-md-6 mb-30px">
+    <div class="listfeaturedtag h-100">
+        <div class="row h-100">
             <!--<div class="col-lg-5 col-md-12 pr-lg-0">-->
                 <!--<div class="h-100">-->
                     <!--&lt;!&ndash;<div class="wrapthumbnail">&ndash;&gt;-->
@@ -13,7 +13,7 @@
                     <!--&lt;!&ndash;</div>&ndash;&gt;-->
                 <!--</div>-->
             <!--</div>-->
-            <div class="col-lg-7 col-md-12">
+            <!--<div class="col-lg-7 col-md-12">-->
                 <div class="h-100 card-group">
                     <div class="card card-image " style ="background-image: url({% if post.image contains "://" %}{{ post.image }}{% else %}{{ post.image | absolute_url }}{% endif %}); background-size: cover; background-repeat: no-repeat">
                         <!--<div class="card-body">-->
@@ -45,7 +45,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                <!--</div>-->
             </div>
         </div>
     </div>

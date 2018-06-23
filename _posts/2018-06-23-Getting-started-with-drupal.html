@@ -1,0 +1,115 @@
+---
+layout: post
+title:  "Getting Started with Drupal"
+author: Manikishan
+categories: [ Drupal, tutorial ,Open-source]
+image: assets/images/drupal.png
+featured: true
+hidden: false
+---
+Drupal is a web platform which works on Content Management System (CMS), which helps to create and manage digital content.This system actually helps one who cannot understand code or doesn't know how databases work to manipulate the database, adding templates, designing the layout with the user interface.Here are some examples of what can we create using Drupal: <a href="https://barackobama.com/">Barack Obama</a>,<a href="http://themis.asu.edu/"> themis</a>.
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<img class="alignnone size-full wp-image-184" src="https://manikishan.files.wordpress.com/2018/01/1418720113_697053-drupal-512.png" alt="1418720113_697053-drupal-512" width="512" height="512" />
+
+<strong>About Drupal:</strong>
+
+Drupal is a web platform which works on Content Management System (CMS), which helps to create and manage digital content.This system actually helps one who cannot understand code or doesn't know how databases work to manipulate the database, adding templates, designing the layout with the user interface.Here are some examples of what can we create using Drupal: <a href="https://barackobama.com/">Barack Obama</a>,<a href="http://themis.asu.edu/"> themis</a>.
+
+<!--more-->
+
+<strong>Getting started with Drupal:</strong>
+
+To contribute or to fix any bugs in any organization we should first,  have the source code of the project we wanted to work in our local system.Now we are going to learn how to install Drupal on our localhost using Linux machine(the os I used is Ubuntu 16.04).Before starting log into the following sites  <a href="http://drupalladder.org">drupal.org</a> and <a href="http://drupalladder.org/ladder/ee503327-50be-1904-8d04-9499098cad64">Drupal ladder</a>.
+<h3>STEP 1:</h3>
+<strong>Install and configure Drupal local environment using LAMP stack in Ubuntu.</strong>
+
+Before installing let us know what LAMP STACK is? and what does it do?
+
+<strong>LAMP STACK:
+</strong>LAMP stands for (Linux, Apache, MySQL, PHP) which is a platform useful manage websites.<img class="alignnone  wp-image-176" src="https://manikishan.files.wordpress.com/2018/01/lamp_software_bundle-svg.png" alt="LAMP_software_bundle.svg.png" width="597" height="336" />
+
+The above picture lets you understand the workflow of the LAMP to some extent.Here <strong>Linux </strong>is our server side,<strong> Apache</strong> is the web server which deals with the HTTP requests and the content written in php. <strong>MySQL </strong>RDMS (Relational Database Management System) which is based on SQL and as Database management system.<strong>PHP </strong>as the Object-oriented scripting language.
+
+<strong>The installing LAMP in Linux:</strong>
+
+There are many ways to install LAMP
+
+<span style="text-decoration:underline;"><strong>Install</strong></span><strong> APACHE2:</strong>
+<pre>$ sudo apt-get update
+$ sudo apt-get install apache2</pre>
+after this, you need to install MySQL
+
+<span style="text-decoration:underline;"><strong><em>Install MySQL:</em></strong></span>
+<pre>$ sudo apt-get install mysql-server mysql-client</pre>
+<span style="text-decoration:underline;"><strong>Installing PHP:</strong></span>
+<pre>$ sudo apt-get install mysql-server mysql-client</pre>
+OR there is a single line command with which you can install the LAMP in your Linux pc and install <strong>phpmyadmin</strong>.
+<pre>$ sudo apt-get install lamp-server^ phpmyadmin</pre>
+PHPMyAdmin is again a free tool which allows us to manage databases (create and modify) and it can be used to administrate MySQL over the Web.
+<h4><strong>STEP 2:
+</strong></h4>
+<strong>Start Apache and MySQL servers.</strong>
+
+You can do it using the "start" command.
+<pre>$ sudo service apache2 start
+$ sudo service mysql start</pre>
+<strong>STEP 3:</strong>
+
+<strong>Clone Drupal8 to 'drupal8' folder in /var/www/html</strong>
+<pre>$ cd /var/www/html</pre>
+use git to clone Drupal8.If you don't have git you can install it by using
+<pre>$ sudo apt-get install git</pre>
+You should then configure git.
+
+When you are sure git is installed follow the command line below:
+<pre><code>$ git clone --branch 8.5.x http://git.drupal.org/project/drupal.git drupal8</code></pre>
+Next, you need to give Read and Write permissions to 'sites/default' and all its subfolders which can be done by using chmod command.
+
+There is one more step to follow to proceed, that is installing the composer.
+
+<strong>Composer:</strong>
+
+The composer is a PHP dependency manager which will manage the dependencies on a project by the project basis.it will install required dependencies to make the project work and it does the installation on its own.You can use the below command to install composer.
+<pre>$<code>sudo apt-get install curl php5-cli git</code></pre>
+we are installing php5-cli to install composer and run it.When php5-client is installed you can move on to installing composer using curl.
+<pre>$<code> curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer
+</code></pre>
+then test the installation by running  $ composer in your terminal and you will see the following output.
+
+<img class="alignnone size-full wp-image-178" src="https://manikishan.files.wordpress.com/2018/01/screenshot-from-2018-01-25-21-14-45-e1516895195271.png" alt="Screenshot from 2018-01-25 21-14-45" width="1920" height="1054" />
+
+with all things set we can move on to the next step of building Drupal.
+
+<strong>STEP 4:</strong>
+
+<strong>Building Drupal to localhost.</strong>
+
+Now move to drupal8 directory and install all the dependencies with the composer which can be done by the following commands
+<pre>$ cd drupal8
+$ composer update</pre>
+When all dependencies got installed you should now copy 'default.settings.php' to 'settings.php' in the same directory.This file can be found in the default folder which we gave Read and Write permissions.(you can use 'chmod' command for it)
+<p style="text-align:justify;">Now we can create a new database using PHPmyadmin.Open that in your favorite browser by</p>
+
+<pre>localhost/phpmyadmin</pre>
+By using the above link in the browser you will get a login page and once logged in with the credentials you gave during installing you can see something like this.
+
+<img class="alignnone size-full wp-image-179" src="https://manikishan.files.wordpress.com/2018/01/screenshot-from-2018-01-25-21-37-14-e1516896696706.png" alt="screenshot-from-2018-01-25-21-37-14.png" width="1785" height="1031" />
+
+Click on 'Databases' in the top left corner and create a new database with name 'drupal8' and select UTF Unicode in the drop-down menu next to it.
+
+Congratulations! you have created a database.Now to see your database use
+<pre>localhost/drupal8</pre>
+You will get a page Shown as below fill in the details and you are done.
+
+<img class="alignnone size-full wp-image-181" src="https://manikishan.files.wordpress.com/2018/01/screenshot-from-2018-01-26-11-37-08-e1516947709770.png" alt="screenshot-from-2018-01-26-11-37-08.png" width="929" height="968" />
+
+Congratulations you have setup drupal locally.
+</body>
+</html>
