@@ -657,4 +657,16 @@ License: https://www.wowthemes.net/freebies-license/
     background-color: black;
 }
 
-
+.pink-text {
+    color: pink
+}
+.featured-title{
+    font-family: Lato;
+    color: #fff;
+    -webkit-text-stroke-width: 0.75mm;
+    font-size: 50px;
+    text-shadow: -4px 4px #000;
+}
+.featured-title:hover{
+    color: #04b0ef;
+}
