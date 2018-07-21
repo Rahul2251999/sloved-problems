@@ -19,6 +19,8 @@
 <link href="{{ site.baseurl }}/assets/css/screen.css" rel="stylesheet">
     
 <link href="{{ site.baseurl }}/assets/css/main.css" rel="stylesheet">
+//footer
+<link href="{{ site.baseurl }}/assets/css/footer.css" rel="stylesheet">
 
 </head>
     
@@ -152,13 +154,13 @@
 			<h2 class="d-md-block d-none">Know More... →</h2>
 		</div>
 		<div class="col-md-8 align-self-center text-center">
-          {% assign tags_list = site.categories %}  
+          {% assign tags_list = site.categories %}
           {% if tags_list.first[0] == null %}
-            {% for tag in tags_list %} 
+            {% for tag in tags_list %}
               <a href="{{ site.baseurl }}/category/{{ tag }}">{{ tag | capitalize }} {{ site.tags[tag].size }}</a>
             {% endfor %}
           {% else %}
-            {% for tag in tags_list %} 
+            {% for tag in tags_list %}
               <a href="{{ site.baseurl }}/category/{{ tag[0] }}">{{ tag[0] | capitalize }} ({{ tag[1].size }})</a>
             {% endfor %}
           {% endif %}
@@ -178,11 +180,13 @@
             <!--<div class="col-md-6 col-sm-6 text-center text-lg-left">-->
                  <!--Copyright © {{ site.time | date: "%Y" }} {{ site.name }} -->
             <!--</div>-->
-            <div class="col-md-6 col-sm-6 text-center text-lg-right">    
+            <div class="col-md-6 col-sm-6 text-center text-lg-right">
                 <a target="_blank" href="#">KillSwitch </a> a Blog by Manikishan
             </div>
         </div>
     </div>
+
+
 </footer>
 <!-- End Footer
 ================================================== -->
@@ -205,5 +209,6 @@
 <script src="{{ site.baseurl }}/assets/js/mediumish.js"></script>
     
 <script id="dsq-count-scr" src="//{{site.disqus}}.disqus.com/count.js"></script>
+
 </body>
 </html>
