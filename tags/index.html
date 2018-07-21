@@ -1,0 +1,35 @@
+---
+layout: page
+current: Tags
+title: Tags
+permalink: /tags/
+navigation: true
+class: page-template
+subclass: 'post page'
+---
+<h2 style="text-align: center;">Tag Cloud  🔖</h2>
+
+<div class="home">
+	<p class="post-meta" style="text-align: center;">
+	{% capture site_tags %}{% for tag in site.tags %}{{ tag | first }}{% unless forloop.last %},{% endunless %}{% endfor %}{% endcapture %}
+	{% assign tags = site_tags | split:',' | sort %}
+	{% include tagcloud.html %}
+	</p>
+</div>
+
+<hr size=20>
+
+<h2 class="page-heading" style="text-align: center;">Posts with #tag</h2>
+{% for tag in site.tags %}
+  <div class="archive-group" style="text-align: center;">
+    {% capture tag_name %}{{ tag | first }}{% endcapture %}
+		<a name="{{ tag_name | slugize }}"></a>
+    <div id="#{{ tag_name | slugize }}"></div>
+    <h3 class="tag-head">#{{ tag_name }} ({{ site.tags[tag_name].size }})</h3>
+    {% for post in site.tags[tag_name] %}
+    <article class="archive-item">
+      <p><a href="{{ site.baseurl }}{{ post.url }}">{{post.title}}</a></p>
+    </article>
+    {% endfor %}
+  </div>
+{% endfor %}

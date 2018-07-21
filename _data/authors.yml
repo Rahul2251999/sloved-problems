@@ -1,0 +1,41 @@
+manikishan:
+  username: manikishan
+  name: ManiKishan
+  url_full: http://manikishan.wordpress.com
+  url: manikishan.github.io
+  bio: The (re)Learner.
+  picture: assets/images/mani.jpg
+  facebook: manikishan.ghantasala
+  twitter: Manikishan@G
+  cover: False
+GopaVasanth:
+  username: GopaVasanth
+  name: GopaVasanth
+  location: Amritapuri, India
+  url_full: http://gopavasanth.wordpress.com/
+  url: gopavasanth.github.io/foss-blog/
+  bio: Enthusiastic Learner
+  picture: assets/images/vasanth.jpg
+  facebook: Gopa.Vasanth
+  twitter: gopavasanth1999
+  cover: False
+bhanuprakashnani:
+  username: bhanuprakashnani
+  name: BhanuPrakash
+  location: Amritapuri, India
+  url_full: http://bhanuprakashnani.wordpress.com/
+  url:
+  bio: DrupalLover, web-dev, Open-Source enthusiast.
+  picture: assets/images/bhanu.jpeg
+  facebook: Bhanu Prakash
+  twitter: Bhanu Prakash
+abhinavdv:
+  username: abhinavdv
+  name: abhinav duvvuri
+  url_full: http://dvabhinav31.wordpress.com
+  location: Amritapuri, India.
+  bio: Software passionist
+  picture: assets/images/abhinav.jpg
+  facebook: 
+  twitter:
+  cover: False

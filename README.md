@@ -1,84 +1,99 @@
-# Jekyll Template - Mediumish by WowThemes.net
+## Introduction
+This is the platform for updating all our blogs from our Foss team members. Subscribe the website and get instant updates about the blogs and interesting topics.
 
-[Live Demo](https://wowthemesnet.github.io/mediumish-theme-jekyll/) &nbsp; | &nbsp; [Download](https://github.com/wowthemesnet/mediumish-theme-jekyll/archive/master.zip)
+## Features
 
-![mediumish](assets/images/mediumish-jekyll-template.png)
+* Out of the box support for multiple authors (via `_data/authors.yml`)
+* Full author information including: picture, bio, website, twitter, facebook, etc.
+* Tag description(s) and personalized covers (via `_data/tags.yml`)
+* Related posts view at the bottom of each post
+* All amfoss default pages: Author page(s), Tag page(s), About page(s), 404, etc.
+* Pagination (infinite scrolling or standard pagination, i.e. posts across multiple pages)
+* Atom Feeds by [Jekyll-feed](https://github.com/jekyll/jekyll-feed)
+* Toggle-able subscribe button (requires an external service)
+* Code Syntax Highlight with [highlight.js](https://highlightjs.org/)
+* Support for Google Analytics tracking
+* Support for Disqus comments (not amfoss standard)
 
-### Features
 
-- Built for Jekyll
-- Compatible with Github pages
-- Featured Posts
-- Index Pagination
-- Post Share
-- Post Categories
-- Prev/Next Link
-- Category Archives (this is not yet compatible with github pages though)
-- Jumbotron Categories
-- Integrations:
-    - Disqus Comments
-    - Google Analaytics
-    - Mailchimp Integration
-- Design Features:
-    - Bootstrap v4.x
-    - Font Awesome
-    - Masonry
-- Layouts:
-    - Default
-    - Post
-    - Page
-    - Archive
-    
-### Using Mediumish
+## Featured
 
-- Open <code>_config.yml</code>. If your site is in root, for <code>baseurl</code>, make sure this is set to <code>baseurl: /</code>. Also, change your Google Analytics code, disqus username, authors, Mailchimp list etc.
-- Mediumish requires 2 plugins: 
-    - <code>$ gem install jekyll-paginate</code>
-    - <code>$ gem install jekyll-archives</code>.
-- Edit the menu and footer copyrights in <code>default.html</code>
-- Start by adding your .md files in <code>_posts</code>. Mediumish already has a few as an example. 
-- YAML front matter
-    - featured post - <code>featured:true</code>
-    - exclude featured post from "All stories" loop to avoid duplicated posts - <code>hidden:true</code>
-    - post image - <code>image: assets/images/mypic.jpg</code>
-    - page comments - <code>comments:true</code>
-    - meta description (optional) - <code>description: "this is my meta description"</code>
-    
-YAML Post Example:
-<pre>
----
-layout: post
-title:  "We all wait for summer"
-author: john
-categories: [ Jekyll, tutorial ]
-image: assets/images/5.jpg
-featured: true
----
-</pre>
+### Deployment
 
-YAML Page Example
-<pre>
----
-layout: page
-title: Mediumish Template for Jekyll
-comments: true
----
-</pre>
+**Important:**  For security reasons, Github does not allow plug-ins (under `_plugins/`) when
+deploying with Github Pages. This means:
 
-### Copyright
+**1)** that we need to generate your site locally (more details below) and push the resulting
+HTML (the contents of `_site/` or `../jasper2-pages/`) to a Github repository, that GitHub Pages
+then host;
 
-Copyright (C) 2018 WowThemes.net.
+**2)** built the site with [travis-ci](https://travis-ci.org/) (with goodies from
+[jekyll-travis](https://github.com/mfenner/jekyll-travis)) automatically pushing the
+generated HTML files to a *gh-pages* branch.
+This later approach is the one I am currently using to generate the live demo.
 
-**Mediumish for Jekyll** is designed and developed by [Sal](https://www.wowthemes.net) and it is *free* under MIT license. 
+**3)** deploy the static website with Jekyll-compatible hosters, such as https://www.netlify.com/, that allow for deployment from the Github repo and publish the website using CDNs. Netlify has a free starter offer.
 
-<a href="https://www.buymeacoffee.com/sal" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: auto !important;width: auto !important;" ></a>
+For option **1)** simply clone this repository (*master branch*), and then run
+`bundle exec jekyll serve` inside the directory. Upload the resulting `_site/` (or `../jasper2-pages/`)
+contents to your repository (*master branch* if uploading as your personal page
+(e.g. username.github.io) or *gh-pages branch* if uploading as a project page
+(as for the [demo](https://github.com/jekyller/jasper2/tree/gh-pages)).
 
-### Contribute
+For option **2)** you will need to set up travis-ci for your personal fork. Briefly all you
+need then is to change your details in *[\_config.yml](_config.yml)* so that you can push
+to your github repo. You will also need to generate a secure key to add to your
+*[.travis.yml](.travis.yml)* (you can find more info on how to do it in that file).
+Also make sure you read the documentation from
+[jekyll-travis](https://github.com/mfenner/jekyll-travis). This approach has clear
+advantages in that you simply push your file changes to GitHub and all the HTML files
+are generated for you and pushed to *gh-pages*. Also you get to know if everything is
+still fine with your site builds. Don't hesitate to contact me if you still have any
+issues (see below about issue tracking).
 
-- [Clone the repo](https://github.com/wowthemesnet/mediumish-theme-jekyll).
-- Create a branch off of master and give it a meaningful name (e.g. my-new-mediumish-feature).
-- Open a pull request on GitHub and describe the feature or fix.
+### Author Pages
 
------------------
+In order to properly generate author pages you need to rename the field *author* in the
+front matter of every post to match that of your each author's *username* as defined
+in the *[\_data/authors.yml](_data/authors.yml)* file.
+With the latest update, multiple author blogs are now supported out of the box.
 
-[Live Demo](https://wowthemesnet.github.io/mediumish-theme-jekyll/) &nbsp; | &nbsp; [Download](https://github.com/wowthemesnet/mediumish-theme-jekyll/archive/master.zip)
+### Compiling Styles
+
+Following on the way Casper styles are compiled as [described here](https://github.com/tryghost/casper#development):
+
+Jasper2 styles are compiled using Gulp/PostCSS to polyfill future CSS spec. You'll need Node and Gulp installed globally. After that, from the theme's root directory:
+
+```bash
+$ npm install
+$ gulp
+```
+
+Now you can edit `/assets/css/` files, which will be compiled to `/assets/built/` automatically.
+
+## Issues and Contributing
+
+This install builds well with Ruby v2.4.2 and Jekyll v3.6.2. If you run into any problems
+please log them on the [issue tracker](https://github.com/jekyller/jasper2/issues).
+
+Feel free pull-request your patches and fixes.
+
+## Thanks
+
+
+Many thanks to the amfoss team for all the design work. Also many thanks to all contributors,
+that help keeping the project alive and updated :smile:
+
+
+## Copyright & License
+
+Same licence as the one provided by amfoss's team. See Casper's theme [license](amfoss.txt).
+
+Copyright (C) 2015-2018 - Released under the MIT License.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.

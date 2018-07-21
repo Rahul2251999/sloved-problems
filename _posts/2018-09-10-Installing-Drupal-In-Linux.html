@@ -1,0 +1,208 @@
+---
+layout: post
+current: post
+cover: assets/images/drupal.jpg
+navigation: True
+title: Installing Drupal In Linux
+date: 2018/01/27
+tags: Opensource Drupal
+class: post-template
+subclass: 'post tag-Opensource'
+author: bhanuprakashnani
+---
+
+<img src="https://oneshoe.de/sites/default/files/inline/drupal_development.jpg" alt="Drupal Logo"></br>
+
+
+Hello!
+
+This is my first technical blog. This blog would make you understand how to setup LAMP and build Drupal locally.
+
+<hr />
+
+<h2><span style="text-decoration: underline;">Contributing to Drupal:</span></h2>
+To contribute to Drupal we need to first build it on our localhost. So now let us discuss how to build Drupal on our localhost.
+<h3>STEP 0</h3>
+Get into www.drupal.org and sign up for Drupal and then create an account in Drupal Ladder and complete the ladder simultaneously.
+<h3>STEP 1</h3>
+Installing Git. Install git using the given commands.
+
+For Linux users:
+<pre>$ sudo apt-get update
+$ sudo apt-get install git</pre>
+<h3>STEP 2</h3>
+<h4>Installing Composers Dependencies.</h4>
+The composer is a dependency manager for PHP. The composer will manage the dependencies you require on a project by project basis. This means that Composer will pull in all the required libraries, dependencies and manage them all in one place.
+<pre>$ sudo apt-get update
+$ sudo apt-get install curl php-cli php-mbstring git unzip</pre>
+<h4>Installing and configuring Composer</h4>
+<pre>$ cd ~
+$ curl -sS https://getcomposer.org/installer -o composer-setup.php</pre>
+To install composer globally, use the following command :
+<pre class="code-pre">$ sudo php composer-setup.php --install-dir=/usr/local/bin --filename=composer</pre>
+The output should be something like this:
+<pre class="code-pre">Output
+All settings correct for using Composer
+Downloading 1.1.1...
+
+Composer successfully installed to: /usr/local/bin/composer
+Use it: php /usr/local/bin/composer
+</pre>
+To test whether the composer is working or not please enter :
+<pre>$ composer</pre>
+Then you should be getting something like this:
+
+Output
+<pre class="code-pre">   ______
+  / ____/___  ____ ___  ____  ____  ________  _____
+ / /   / __ \/ __ `__ \/ __ \/ __ \/ ___/ _ \/ ___/
+/ /___/ /_/ / / / / / / /_/ / /_/ (__  )  __/ /
+\____/\____/_/ /_/ /_/ .___/\____/____/\___/_/
+                    /_/
+Composer version 1.1.1 2016-05-17 12:25:44
+
+Usage:
+  command [options] [arguments]
+
+Options:
+  -h, --help                     Display this help message
+  -q, --quiet                    Do not output any message
+  -V, --version                  Display this application version
+      --ansi                     Force ANSI output
+      --no-ansi                  Disable ANSI output
+  -n, --no-interaction           Do not ask any interactive question
+      --profile                  Display timing and memory usage information
+      --no-plugins               Whether to disable plugins.
+. . .
+</pre>
+<h3>STEP 3</h3>
+<h4>Installing Drush</h4>
+<pre>$ composer global require drush/drush:8.*</pre>
+Navigate to the Drupal directory using the cd command and then type:
+<pre>$ drush core-status</pre>
+This should return the version of the Drush.
+
+Here comes the main part of our build.
+<h3>STEP 4</h3>
+<h4>Installing LAMP/WAMP</h4>
+This is the major step of our build which involves installing lamp and configuring it.
+<div id="content-center" class="content-center">LAMP is an open source Web development platform that uses</div>
+<div class="content-center">
+
+Linux as the operating system,
+
+<section class="section definition-section">Apache as the Web server,</section>MySQL as the relational database management system and
+
+</div>
+<div class="content-center">
+
+PHP as the object-oriented scripting language.
+
+<section></section><section></section><section class="section definition-section"><img class="wp-image-355 aligncenter" src="https://bhanuprakashnani.files.wordpress.com/2018/01/download.jpg" alt="download" width="485" height="130" /></section></div>
+<section></section>
+<h4>Installing Apache</h4>
+We can get started by typing these commands:
+<pre>$ sudo apt-get update
+$ sudo apt-get install apache2</pre>
+Press <strong>Y</strong> and hit <strong>Enter</strong> to continue, and the installation will proceed.
+
+To check for errors please type:
+<pre>$ apache2ctl configtest</pre>
+<div id="content-center" class="content-center">
+
+You should be getting something like this if everything is working fine:
+<pre>Output
+Syntax OK</pre>
+Restart Apache to implement your changes:
+<pre>$ systemctl restart apache2</pre>
+To check everything is working fine in your browser :
+<pre>http://your_server_IP_address</pre>
+You should get the Ubuntu start page which looks like this:
+
+<img class="alignnone size-full wp-image-358" src="https://bhanuprakashnani.files.wordpress.com/2018/01/z5u2b.png" alt="Z5u2B.png" width="1366" height="768" />
+
+If you see this page, then your web server is now correctly installed and accessible through your firewall.
+<h4>Installing MySQL</h4>
+Now we have to install MySQL-Structured Query Language by entering the command :
+<pre>$ apt-get install mysql-server</pre>
+To get our MySQL environment set up securely we need to tell MySQL to create its database directory structure where it will store its information. You can do this by typing:
+<pre>$sudo mysql_install_db</pre>
+</div>
+Run a simple security script that will remove some dangerous defaults and lock down access to our database system. For that type:
+<pre class="code-pre">$ sudo mysql_secure_installation</pre>
+At this point, your database system is now set up and we can move on.
+<h4>Installing PHP</h4>
+This should install PHP without any problems.
+<pre class="code-pre">$ sudo apt-get install php5 libapache2-mod-php5 php5-mcrypt</pre>
+Apache will first look for a file called index.html. We want to tell our web server to prefer PHP files, so we'll make Apache look for an index.php file first.
+
+To save all the changes we have done restart apache2:
+<pre class="code-pre">$ sudo service apache2 restart</pre>
+This is how you Install LAMP.
+
+If you face any errors then try the single line command to install Lamp along with phpmyadmin:
+<pre class="sites-codeblock sites-codesnippet-block">$ sudo apt-get  install lamp-server^ phpmyadmin</pre>
+<div></div>
+<div>This will automatically configure lamp on your desktop.</div>
+<div></div>
+<h3>STEP 5</h3>
+<h4>Configuring phpmyadmin</h4>
+After installing phpmyadmin with the command
+<pre>$ sudo apt-get update
+$ sudo apt-get install phpmyadmin</pre>
+Which will open the below screen....
+
+<img class="alignnone size-full wp-image-359" src="https://bhanuprakashnani.files.wordpress.com/2018/01/phpmyadmin-lamp.png" alt="phpmyadmin-lamp" width="716" height="290" />
+
+Then select yes to continue configuring phpmyadmin
+
+<img class="alignnone size-full wp-image-361" src="https://bhanuprakashnani.files.wordpress.com/2018/01/phpmyadmin-apache-config.png" alt="phpmyadmin-apache-config" width="711" height="363" />
+
+Then set up a password for your root user
+
+<img class="alignnone size-full wp-image-360" src="https://bhanuprakashnani.files.wordpress.com/2018/01/phpmyadmin-ubuntu-16-04.png" alt="phpmyadmin-ubuntu-16.04" width="711" height="231" />
+
+Once this step is done, you will find that a new database named phpmyadmin is created. To save your changes reload apache2.
+<pre>$ sudo systemctl reload apache2</pre>
+To check phpmyadmin is working please open the given address in your browser.
+<pre><img class="alignnone size-full wp-image-362" src="https://bhanuprakashnani.files.wordpress.com/2018/01/phpmyadmin-ubuntu.png" alt="phpmyadmin-ubuntu" width="939" height="630" /></pre>
+Now log on to it using the root username with the same password you gave for MySQL.
+<h3>STEP 6</h3>
+<h4><strong>Clone Drupal8
+</strong></h4>
+After logging in we have to clone the Drupal repository.
+<pre>$ cd /var/www/html
+$ git clone --branch 8.5.x http://git.drupal.org/project/drupal.git drupal8</pre>
+<h3>STEP 7</h3>
+Now as you have cloned the website into your localhost. Now create a database named Drupal in phpmyadmin.
+
+<img class="alignnone size-full wp-image-364" src="https://bhanuprakashnani.files.wordpress.com/2018/01/mdb-create-new-db.png" alt="mdb-create-new-db" width="804" height="362" />
+
+Now open in your browser :
+<pre>localhost/name_of_site</pre>
+which should give you this page:
+
+<img class="alignnone size-full wp-image-365" src="https://bhanuprakashnani.files.wordpress.com/2018/01/drupal-installation-requirements-review.jpg" alt="Drupal-installation-requirements-review" width="1031" height="637" />
+<h3>STEP 8</h3>
+The main requirements will be
+
+<img class="alignnone size-full wp-image-366" src="https://bhanuprakashnani.files.wordpress.com/2018/01/screen_3.png" alt="Screen_3" width="459" height="276" />
+
+Solve the above error by copying the information from /sites/default/default.settings.php to /sites/default/settings.php
+
+You have to give read and write permissions to the files directory in sites/default folder. Now create a file named ‘files’. Then using the below command, give read and write permissions. For this, use:
+<pre> $ cd sites/default
+ $ mkdir files
+ $ chmod 777 files</pre>
+These are the basic requirements and then click on continue anyway and then you get the next page as:
+
+<img class="alignnone size-full wp-image-367" src="https://bhanuprakashnani.files.wordpress.com/2018/01/drupal-8-install-process.png" alt="drupal-8-install-process.png" width="900" height="554" />
+
+Complete the process as shown above and then do the next step to see your Drupal website on your localhost.
+<h3>STEP 9</h3>
+Now you have your website on your localhost. To check it please type:
+<pre>localhost/site_name</pre>
+<img class="alignnone size-full wp-image-368" src="https://bhanuprakashnani.files.wordpress.com/2018/01/installed_site.png" alt="installed_site.png" width="715" height="375" />
+
+Congratulations !!! You have successfully installed and built Drupal on your localhost.
+Please give your suggestions and comments below and post your doubts too.
